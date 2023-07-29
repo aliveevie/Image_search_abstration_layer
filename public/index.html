@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./index.css" rel="stylesheet">
     <title>Image Search Abstraction</title>
 </head>
 <body>
@@ -50,12 +51,12 @@
                 queryInput.disabled = true;
                 pageInput.disabled = true;
                 sizeSelection.disabled = true; 
-            }
+            }else{
             // Enable the input elements for other options
             queryInput.disabled = false;
             pageInput.disabled = false;
             sizeSelection.disabled = false;
-           
+            }
 
             const query = queryInput.value.trim();
             const page = pageInput.value.trim();
