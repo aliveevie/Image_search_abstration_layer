@@ -11,13 +11,13 @@
     <p>Search the web for images or see recent searches</p>
     <p>Type of Search: 
         <select id="searchType">
-            <option value="searchForImage">Search for Images</option>
-            <option value="recentSearch">Recent Searches</option>
+            <option value="search">Search for Images</option>
+            <option value="recent">Recent Searches</option>
         </select>
     </p>
     <div id="queryPage">
-    <p>Query: <input  /></p>
-    <p>Page: <input  value="page" type="number"/></p>
+    <p>Query: <input  id="queryInput" /></p>
+    <p>Page: <input   id="pageInput" value="page" type="number"/></p>
     </div>
     <p>Image Size: 
         <select id="size">
@@ -31,15 +31,45 @@
     </p>
     <!-- Display the Url here using Javascript! -->
     <!-- Display the Item selected Here -->
-    <p>Here's your url: <a id="urlDisplay"></a></p>
+    <p>Here's your url: <a id="urlDisplay" target="_blank"></a></p>
 
     <script>
+        let url = 'https://image-search-abstraction-layer.freecodecamp.rocks/';
+        let selectedOption = 'normal'; // Initial selected option is 'normal'
+        const urlDisplay = document.getElementById('urlDisplay');
         const recentSearch = document.getElementById('searchType');
-        recentSearch.addEventListener('change', (event) => {
-            const selecteOption = event.target.value;
-            console.log(selectedOption);
-        })
+        const queryInput = document.getElementById('queryInput');
+        const pageInput = document.getElementById('pageInput');
+        const sizeSelection = document.getElementById('size')
 
+        // Function to update the URL and display it
+        function updateUrl() {
+            url = 'https://image-search-abstraction-layer.freecodecamp.rocks/';
+            if (selectedOption === 'recent') {
+                url += 'recent';
+                queryInput.disabled = true;
+                pageInput.disabled = true;
+                sizeSelection.disabled = true; 
+            }else {
+            // Enable the input elements for other options
+            queryInput.disabled = false;
+            pageInput.disabled = false;
+            sizeSelection.disabled = false;
+            
+        }
+            // Update the URL display
+            urlDisplay.href = url;
+            urlDisplay.textContent = url;
+        }
+    
+        // Set the initial URL display
+        updateUrl();
+    
+        // Update the URL and selectedOption when the dropdown value changes
+        recentSearch.addEventListener('change', (event) => {
+            selectedOption = event.target.value;
+            updateUrl();
+        });
     </script>
 
 </body>
