@@ -18,7 +18,7 @@
     <p>Query: <input  value="query"/></p>
     <p>Page: <input  value="page" type="number"/></p>
     <p>Image Size: 
-        <select>
+        <select id="size">
             <option value="all">All</option>
             <option value="small">small</option>
             <option value="medium" >medium</option>
@@ -27,6 +27,23 @@
             <option value="xxlarge" >xxlarge</option>
         </select>
     </p>
-    <p>Here's your url: <a href=" https://image-search-abstraction-layer.freecodecamp.rocks/"></a></p>
+    <!-- Display the Url here using Javascript! -->
+    <!-- Display the Item selected Here -->
+    <p>The selected item is: <span id="selectedItem"></span> </p>
+    <p>Here's your url:  </p>
+
+
+<script>
+    const selectedItem = document.getElementById('size');
+    const displaySelected = document.getElementById('selectedItem');
+
+    selectedItem.addEventListener('change', (event) => {
+        const selectedOption = event.target.value
+        displaySelected.textContent = selectedOption
+    })
+
+
+</script>
+
 </body>
 </html>
