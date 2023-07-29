@@ -15,8 +15,10 @@
             <option value="recentSearch">Recent Searches</option>
         </select>
     </p>
-    <p>Query: <input  value="query"/></p>
+    <div id="queryPage">
+    <p>Query: <input  /></p>
     <p>Page: <input  value="page" type="number"/></p>
+    </div>
     <p>Image Size: 
         <select id="size">
             <option value="all">All</option>
@@ -29,21 +31,16 @@
     </p>
     <!-- Display the Url here using Javascript! -->
     <!-- Display the Item selected Here -->
-    <p>The selected item is: <span id="selectedItem"></span> </p>
-    <p>Here's your url:  </p>
+    <p>Here's your url: <a id="urlDisplay"></a></p>
 
+    <script>
+        const recentSearch = document.getElementById('searchType');
+        recentSearch.addEventListener('change', (event) => {
+            const selecteOption = event.target.value;
+            console.log(selectedOption);
+        })
 
-<script>
-    const selectedItem = document.getElementById('size');
-    const displaySelected = document.getElementById('selectedItem');
-
-    selectedItem.addEventListener('change', (event) => {
-        const selectedOption = event.target.value
-        displaySelected.textContent = selectedOption
-    })
-
-
-</script>
+    </script>
 
 </body>
 </html>
